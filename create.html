@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>TrackIT - Create Project</title>
+</head>
+<body class="bg-orange-200 font-sans">
+
+  <!-- Sidebar and Main Container -->
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-1/4 bg-orange-400 text-white p-5">
+      <h1 class="text-4xl font-bold mb-10 ml-12">TrackIT</h1>
+      <nav>
+        <ul>
+          <li class="mb-4">
+            <button class=" w-56 bg-orange-300 text-orange-900 py-3 rounded-xl">DashBoard</button>
+          </li>
+          <li class="mb-4">
+            <button class=" w-56 bg-orange-300 text-orange-900 py-3 rounded-xl">LeaderBoard</button>
+          </li>
+          <li>
+            <button class=" w-56 bg-orange-300 text-orange-900 py-3 rounded-xl">Profile</button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10 bg-orange-100">
+      <!-- Header -->
+      <header class="mb-8">
+        <h2 class="text-3xl font-bold text-orange-800">Creating A New Project</h2>
+      </header>
+
+      <!-- Project Form -->
+      <div class="bg-orange-300 p-8 rounded-lg shadow-lg max-w-3xl">
+        <form>
+          <!-- Project Name -->
+          <div class="mb-6 flex ">
+            <label class="block text-lg font-bold mb-2">Project Name</label>
+            <p class="ml-5 font-bold ">Task Track</p>
+          </div>
+
+          <!-- Summary -->
+           <table class="gap-9">
+           <tr>
+          
+            <td><label class="block text-lg font-bold mb-2">Summary</label></td>
+           <td > <textarea class="ml-5 rounded-xl p-5" name="" id="" ></textarea> 
+          </tr>
+
+          <tr>
+          
+            <td><label class="block text-lg font-bold mb-2">Description</label></td>
+           <td> <textarea class="ml-5 rounded-xl p-5" name=" " id=""></textarea> </td>
+         
+          </tr>
+        </table>
+
+         
+
+          <!-- Reporter -->
+          <div class="mb-6">
+            <label class="block text-lg font-bold mb-2">Reporter</label>
+            <input type="text" value="Prapti Mojumder" class="w-full bg-orange-100 p-3 rounded-lg border border-orange-400" readonly>
+          </div>
+
+          <!-- Assignee -->
+          <div class="mb-6">
+            <label class="block text-lg font-bold mb-2">Assignee</label>
+            <div class="flex items-center">
+              <div class="bg-orange-500 w-8 h-8 rounded-full flex justify-center items-center text-white text-xl mr-4">👤</div>
+              <span>Assignee</span>
+            </div>
+          </div>
+
+          
+          <button id="signupButton2" type="submit" class="w-full bg-yellow-400 text-white py-3 rounded-lg text-xl font-bold">
+            Create
+          </button>
+        </form>
+      </div>
+    </main>
+<script src="js/mybutton.js"></script>
+<script src="js/create.js"></script>
+</body>
+</html>

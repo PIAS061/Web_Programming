@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackIT Leaderboard</title>
+  <a href="profile.html"></a>
+  <script src="script.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+   #Sadman{
+    width: 850px;
+    height: 100px;
+    margin-left: 200px;
+   } 
+   #prapti{
+    width: 800px;
+    height: 100px;
+    margin-left: 200px;
+   }
+   #robin{
+    width: 750px;
+    height: 100px;
+    margin-left: 200px;
+
+   }
+   #awal{
+    width: 700px;
+    height: 100px;
+    margin-left: 200px;
+   }
+   #back2{
+    background-image: url('/pexels-artempodrez-7233356.jpg');
+    background-size: cover;
+   }
+  </style>
+</head>
+<body id="back2" class="bg-[#79461e] text-white min-h-screen flex">
+  <!-- Sidebar -->
+  <div class="w-80 bg-white flex flex-col p-6 gap-4">
+    <h1 class="text-2xl font-bold text-black ml-20">TrackIT</h1>
+    <button class="py-2 px-4 rounded bg-slate-200 text-black text-center w-56" onclick="navigateTo('dashboard.html')">DashBoard</button>
+    <button class="py-2 px-4 rounded bg-slate-200 text-black text-center w-56" onclick="navigateTo('leaderboard.html')">LeaderBoard</button>
+    <button class="py-2 px-4 rounded bg-stone-200 text-black text-center w-56" onclick="navigateTo('profile.html')">Profile</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-6">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-semibold">Top Contributors</h2>
+      <input
+        type="text"
+        placeholder="Search"
+        class="rounded-lg px-4 py-2 text-black"
+      />
+    </div>
+
+    <!-- Contributors List -->
+    <div class="space-y-6">
+      <div class="flex justify-between items-center bg-[#f1c9a8]  p-4 rounded-xl" id="Sadman">
+        <div class="flex items-center gap-4">
+          <img src="https://via.placeholder.com/50" alt="Sadman Sakib" class="rounded-full w-12 h-12">
+          <p class="text-[#5b3412] font-semibold">Sadman Sakib</p>
+        </div>
+        <div class="flex items-center gap-2 text-[#5b3412]">
+          <span>245</span>
+          <div class="bg-yellow-400 w-6 h-6 rounded-full"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center bg-[#f1c9a8] w-1/2 p-4 rounded-xl" id="prapti">
+        <div class="flex items-center gap-4">
+          <img src="https://via.placeholder.com/50" alt="Prapti Mojumder" class="rounded-full w-12 h-12">
+          <p class="text-[#5b3412] font-semibold">Prapti Mojumder</p>
+        </div>
+        <div class="flex items-center gap-2 text-[#5b3412]">
+          <span>145</span>
+          <div class="bg-yellow-400 w-6 h-6 rounded-full"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center bg-[#f1c9a8] p-4 rounded-xl" id="robin">
+        <div class="flex items-center gap-4">
+          <img src="https://via.placeholder.com/50" alt="Software Management Project" class="rounded-full w-12 h-12">
+          <p class="text-[#5b3412] font-semibold">Software Management Project</p>
+        </div>
+        <div class="flex items-center gap-2 text-[#5b3412]">
+          <span>45</span>
+          <div class="bg-yellow-400 w-6 h-6 rounded-full"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center bg-[#f1c9a8] p-4 rounded-xl " id="awal">
+        <div class="flex items-center gap-4">
+          <img src="https://via.placeholder.com/50" alt="Security Management Project" class="rounded-full w-12 h-12">
+          <p class="text-[#5b3412] font-semibold">Security Management Project</p>
+        </div>
+        <div class="flex items-center gap-2 text-[#5b3412]">
+          <span>15</span>
+          <div class="bg-yellow-400 w-6 h-6 rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

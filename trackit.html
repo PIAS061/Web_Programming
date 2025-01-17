@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>TrackIT</title>
+  <style>
+    #create{
+      background-image: url(/Resources/8101840.jpg);
+      background-size: cover;
+      width: 1920px;
+      height: 800px;
+    
+    }
+
+    #navigateToPage1{
+      width: 850px;
+    height: 100px;
+    margin-left: 135px;
+
+    }
+    #navigateToPage2{
+      width: 850px;
+    height: 100px;
+    margin-left: 135px;
+
+    }
+    #navigateToPage3{
+      width: 850px;
+    height: 100px;
+    margin-left: 135px;
+
+    }
+    #navigateToPage4{
+      width: 850px;
+    height: 100px;
+    margin-left: 135px;
+
+    }
+    #navigateToPage1, #navigateToPage2, #navigateToPage3, #navigateToPage4, #profileWork, .mb-4.button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #navigateToPage1:hover, #navigateToPage2:hover, #navigateToPage3:hover, #navigateToPage4:hover, #profileWork:hover, .mb-4.button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+
+  </style>
+</head>
+<body class="bg-red-300 font-sans">
+
+ 
+  <div class="flex h-screen">
+    <aside class="w-80 bg-white text-white p-5">
+      <h1  class="text-4xl font-bold mb-10 ml-12 text-black ">TrackIT</h1>
+      <nav>
+        <ul>
+          <li class="mb-4">
+            <button class=" w-56 bg-stone-200 text-black py-3 rounded-xl">DashBoard</button>
+          </li>
+          <li class="mb-4">
+            <button class="w-56 bg-stone-200 text-black py-3 rounded-xl">LeaderBoard</button>
+          </li>
+          <li>
+            <button id="profileWork" class="w-56 bg-stone-200 text-black py-3 rounded-xl">Profile</button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+   
+    <main class="flex-1 p-8 relative" id="create">
+      <header class="flex justify-between items-center mb-10">
+        <h2 class="text-3xl font-bold text-white ml-44">Create Project <svg id="MyButton" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        </h2>
+        <div class="flex items-center space-x-3">
+          <input type="text" placeholder="Search" class="py-2 px-4 border rounded-lg">
+          <button class="py-2 px-4 mb-2 rounded-lg"></button>
+        </div>
+      </header>
+
+     
+      <div class="space-y-6">
+        <div id="navigateToPage1" class="bg-orange-100 opacity-80 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold">
+          Web Management Project
+        </div>
+        <div id="navigateToPage2" class="bg-orange-100 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold opacity-80 ">
+          Security Management Project
+        </div>
+        <div id="navigateToPage3" class="bg-orange-100 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold opacity-80 ">
+          Software Management Project
+        </div>
+        <div id="navigateToPage4" class="bg-orange-100 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold opacity-80 ">
+          Security Management Project
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/script2.js"></script>
+  <script src="js/web dev.js"></script>
+  
+  <script src="js/mybutton.js"></script>
+  <script src="js/profile1.js"></script>
+  <script src="js/security.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackIT Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #pixel{
+        background-image: url('/pexels-lum3n-44775-399161.jpg');
+        background-size: cover;
+      
+       
+    }
+  </style>
+</head>
+<body class="bg-orange-800 font-sans min-h-screen">
+
+  <!-- Main Layout -->
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-1/5 bg-orange-400 p-6 text-center space-y-8">
+      <h1 class="text-3xl text-white font-bold">TrackIT</h1>
+      <div class="space-y-4">
+        <button class="block w-full py-2 bg-orange-100 text-orange-800 font-medium rounded-md hover:bg-green-300">DashBoard</button>
+        <button class="block w-full py-2 bg-orange-100 text-orange-800 font-medium rounded-md hover:bg-green-300">LeaderBoard</button>
+        <button class="block w-full py-2 bg-orange-100 text-orange-800 font-medium rounded-md hover:bg-green-300">Profile</button>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main id="pixel" class="w-4/5 bg-orange-200 p-10">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-8">
+        <h2 class="text-4xl font-bold text-black">Security Project Management</h2>
+        <div class="flex items-center space-x-4">
+         <div class="flex">
+            <input  type="search" name="" id="" placeholder="search" class="px-4 py-2 rounded-full bg-white text-black placeholder-gray-500 border border-gray-300 focus:ring-2 focus:ring-orange-500 " >
+            
+         </div>
+
+          <div class="flex -space-x-2">
+            <img
+              src="https://via.placeholder.com/40"
+              alt="Avatar 1"
+              class="w-10 h-10 rounded-full border-2 border-white"
+            />
+            <img
+              src="https://via.placeholder.com/40"
+              alt="Avatar 2"
+              class="w-10 h-10 rounded-full border-2 border-white"
+            />
+            <img
+              src="https://via.placeholder.com/40"
+              alt="Avatar 3"
+              class="w-10 h-10 rounded-full border-2 border-white"
+            />
+          </div>
+          <span class="text-lg font-medium text-orange-900">7+</span>
+        </div>
+      </header>
+
+      <!-- Task Board -->
+      <section class="grid grid-cols-3 gap-6">
+        <!-- To Do Column -->
+        <div class="bg-orange-300 rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-bold text-center mb-4">TO DO ☕</h3>
+          <div class="bg-white p-4 rounded-lg mb-4 shadow-md">
+            <div class="flex items-center space-x-2">
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="w-8 h-8 rounded-full">
+              <p>Design, login, and signup</p>
+            </div>
+          </div>
+          <button id="add" class="block w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
+            Add +
+          </button>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="bg-orange-300 rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-bold text-center mb-4">IN PROGRESS ☕</h3>
+          <div class="bg-white p-4 rounded-lg mb-4 shadow-md">
+            <div class="flex items-center space-x-2">
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="w-8 h-8 rounded-full">
+              <p>Design, login, and signup</p>
+            </div>
+            
+          </div>
+          <p class="text-sm text-gray-600 mt-2 text-center">Prapti Requested for Approval</p>
+        </div>
+
+        <!-- Done Column -->
+        <div class="bg-orange-300 rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-bold text-center mb-4">DONE ☕</h3>
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <div class="flex items-center space-x-2">
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="w-8 h-8 rounded-full">
+              <p>Design, login, and signup</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+<script>
+  document.getElementById('add').addEventListener('click', function (){
+    window.location.href = 'description.html'; 
+
+});
+</script>
+</body>
+</html>

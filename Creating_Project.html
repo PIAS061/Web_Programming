@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Project</title>
+<link rel="stylesheet" href="Css/Creating_Project.css">
+<script src="js/progress2.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h1>TrackIT</h1>
+      <button>DashBoard</button>
+      <button>LeaderBoard</button>
+      <button>Profile</button>
+    </div>
+    <div class="main">
+      <header>
+        <h2>Creating A New Project</h2>
+      </header>
+      <div class="form-container">
+        <div class="form-field">
+            <label class="block text-lg font-bold mb-2">Project Name</label>
+            <p class="ml-5 font-bold ">Task Track</p>
+        </div>
+        <div class="form-field">
+          <label for="summary">Summary</label>
+          <input type="text" id="summary" placeholder="Enter summary">
+        </div>
+        <div class="form-field">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Enter description"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="reporter">Reporter</label>
+          <input type="text" id="reporter" value="Prapti Mojumder" disabled>
+        </div>
+        <div class="form-field">
+          <label for="assignee">Assignee</label>
+          <div class="assignee-dropdown">
+            <input type="text" id="assignee-search" placeholder="Search assignee">
+            <div class="assignee-list">
+              <div class="assignee-item">Sadman Sakib</div>
+              <div class="assignee-item">Prapti Mojumder</div>
+            </div>
+          </div>
+        </div>
+        <button id="submit-btn">Create Project</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

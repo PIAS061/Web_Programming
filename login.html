@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #back {
+      background-color: #0d4d52; /* Soft teal for a clean, fresh look */
+    background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
+    }
+
+    /* Loader for button */
+    .loader {
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #fff;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Small screen adjustment */
+    @media (max-width: 640px) {
+      .w-96 {
+        width: 90%;
+      }
+    }
+
+    /* Sidebar Styling */
+    aside {
+      background-color: #FFDEE9;
+      background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+      width: 200px; /* Adjust width as needed */
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Sidebar Buttons */
+    .sidebar-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      background-color: #FFD1D1; /* Default button color */
+      transition: all 0.3s ease-in-out;
+      width: 100%; /* Make buttons span the full width of the sidebar */
+      padding: 10px 15px; /* Add padding to buttons */
+      border: none; /* Remove default button border */
+      border-radius: 5px; /* Add rounded corners */
+      margin-bottom: 10px; /* Space between buttons */
+    }
+
+    .sidebar-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      background-color: #B5FFFC; /* Button hover color */
+      color: #333; /* Keep text color readable */
+    }
+
+    .sidebar-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Highlight Active Button */
+    .sidebar-button.active {
+      background-color: #FFD1D1; /* Golden color for active */
+      color: #333;
+    }
+  </style>
+</head>
+<body id="back" class="flex items-center justify-center min-h-screen">
+  <div class="bg-white rounded-lg p-6 shadow-lg w-1/4">
+    <h2 class="text-center text-xl font-bold text-black mb-4">Login</h2>
+    <form id="loginForm" class="space-y-4">
+      <!-- Email Field -->
+      <div>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your Email"
+          aria-label="Email"
+          required
+          class="w-full px-4 py-2 text-black placeholder-gray-500 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        >
+        <div id="email-error" class="text-red-500 text-sm mt-1 hidden"></div>
+      </div>
+
+      <!-- Name Field -->
+      <div >
+        <input
+          type="password"
+          id="name"
+          placeholder="Enter your Password"
+          aria-label="Name"
+          required
+          class="w-full px-4 py-2 text-black placeholder-gray-500 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        >
+        <div id="name-error" class="text-red-500 text-sm mt-1 hidden"></div>
+      </div>
+
+      <!-- Login Button -->
+      <button
+        type="button"
+        id="loginButton"
+        class="w-full py-2 text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition duration-200 font-bold">
+        Log in
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginButton').addEventListener('click', function () {
+      const email = document.getElementById('email').value.trim();
+      const name = document.getElementById('name').value.trim();
+      const emailError = document.getElementById('email-error');
+      const nameError = document.getElementById('name-error');
+
+      // Reset previous error messages
+      emailError.classList.add('hidden');
+      nameError.classList.add('hidden');
+
+      let isValid = true;
+
+      // Email Validation
+      if (!email) {
+        emailError.textContent = 'Email is required.';
+        emailError.classList.remove('hidden');
+        isValid = false;
+      } else if (!validateEmail(email)) {
+        emailError.textContent = 'Please enter a valid email address.';
+        emailError.classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Name Validation
+      if (!name) {
+        nameError.textContent = 'Name is required.';
+        nameError.classList.remove('hidden');
+        isValid = false;
+      }
+
+      // If fields are valid
+      if (isValid) {
+        const loginButton = document.getElementById('loginButton');
+        loginButton.innerHTML = '<span class="loader"></span> Logging in...';
+        loginButton.disabled = true;
+
+        // Simulate a delay for login process
+        setTimeout(() => {
+          window.location.href = 'trackit_prototype.html'; // Redirect to another page
+        }, 500);
+      }
+    });
+
+    // Helper function for email validation
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+  </script>
+</body>
+</html>

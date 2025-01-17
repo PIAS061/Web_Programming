@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackIT Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #pixel{
+        background-color: #0d4d52; /* Soft teal for a clean, fresh look */
+    background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
+    }
+    /* Sidebar Styling */
+    aside {
+      background-color: #FFDEE9;
+      background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+    }
+
+    /* Sidebar Buttons */
+    .sidebar-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      background-color: #FFD1D1; /* Default button color */
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      background-color: #B5FFFC; /* Button hover color */
+      color: #333; /* Keep text color readable */
+    }
+
+    .sidebar-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Highlight Active Button */
+    .sidebar-button.active {
+      background-color: #FFD1D1; /* Golden color for active */
+      color: #333;
+    }
+    
+  </style>
+</head>
+<body class="bg-orange-800 font-sans min-h-screen">
+
+  <!-- Main Layout -->
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-80 p-5">
+        <h1 class="text-4xl font-bold mb-10 ml-12 text-black">TrackIT</h1>
+        <nav>
+          <ul>
+            <li class="mb-4">
+              <button id="dashboardBtn" class="w-56 py-3 rounded-xl sidebar-button active" onclick="navigateTo('trackit_prototype.html')">DashBoard</button>
+            </li>
+            <li class="mb-4">
+              <button id="leaderboardBtn" class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('leaderboard_prototype.html')">LeaderBoard</button>
+            </li>
+            <li>
+              <button id="profileBtn" class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('profile_prototype.html')">Profile</button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    <!-- Content -->
+    <main id="pixel" class="w-4/5 bg-orange-200 p-10">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-8">
+        <h2 class="text-4xl font-bold text-black">Security Project Management</h2>
+        <div class="flex items-center space-x-4">
+         <div class="flex">
+            <input  type="search" name="" id="" placeholder="search" class="px-4 py-2 rounded-full bg-white text-black placeholder-gray-500 border border-gray-300 focus:ring-2 focus:ring-orange-500 " >
+            
+         </div>
+
+          <div class="flex -space-x-2">
+            <img
+              src="Resources/profile.avif"
+              alt="Avatar 1"
+              class="w-10 h-10 rounded-full border-2 border-white"
+            />
+ <img
+              src="Resources/profile.avif"
+              alt="Avatar 2"
+              class="w-10 h-10 rounded-full border-2 border-white"
+            />
+            <img
+              src="Resources/profile.avif"
+              alt="Avatar 3"
+              class="w-10 h-10 rounded-full border-2 border-white"
+            />
+          </div>
+          <span class="text-lg font-medium text-orange-900">7+</span>
+        </div>
+      </header>
+
+      <!-- Task Board -->
+      <section class="grid grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-bold text-center mb-4 text-orange-800">TO DO ☕</h3>
+          <div class="bg-orange-100 p-4 rounded-lg mb-4 shadow-md">
+            <div class="flex items-center space-x-2">
+              <img src="Resources/profile.avif" alt="Avatar" class="w-8 h-8 rounded-full">
+              <p class="text-gray-800">Design, login, and signup</p>
+            </div>
+          </div>
+          <button id="add" class="block w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
+            Add +
+          </button>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-bold text-center mb-4 text-orange-800">IN PROGRESS ☕</h3>
+          <div class="bg-orange-100 p-4 rounded-lg mb-4 shadow-md">
+            <div class="flex items-center space-x-2">
+              <img src="Resources/profile.avif" alt="Avatar" class="w-8 h-8 rounded-full">
+              <p class="text-gray-800">Design, login, and signup</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mt-2 text-center">Prapti Requested for Approval</p>
+        </div>
+
+        <!-- Done Column -->
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-bold text-center mb-4 text-orange-800">DONE ☕</h3>
+          <div class="bg-orange-100 p-4 rounded-lg shadow-md">
+            <div class="flex items-center space-x-2">
+              <img src="Resources/profile.avif" alt="Avatar" class="w-8 h-8 rounded-full">
+              <p class="text-gray-800">Design, login, and signup</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    function navigateTo(page) {
+      window.location.href = page; 
+    }
+  </script>
+
+</body>
+</html>

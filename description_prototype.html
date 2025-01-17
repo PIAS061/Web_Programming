@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Creation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+
+    body{
+        background-color: #0d4d52; /* Soft teal for a clean, fresh look */
+    background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
+    }
+    /* Sidebar Styling */
+    aside {
+      background-color: #FFDEE9;
+      background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+    }
+
+    /* Sidebar Buttons */
+    .sidebar-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      background-color: #FFD1D1; /* Default button color */
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      background-color: #B5FFFC; /* Button hover color */
+      color: #333; /* Keep text color readable */
+    }
+
+    .sidebar-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Highlight Active Button */
+    .sidebar-button.active {
+      background-color: #FFD700; /* Golden color for active */
+      color: white;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      
+      gap: 30px;
+      height: max-content;
+    }
+
+    /* Card Design */
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+      color: black;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h2, .card h3 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .status {
+      display: inline-block;
+      background-color: #d2b48c;
+      color: black;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #8b5a2b;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #a0522d;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      aside {
+        width: 100%; /* Full width on smaller screens */
+        text-align: center;
+      }
+
+      .main-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#79461e] text-white min-h-screen flex">
+  <div class="container flex">
+    <!-- Sidebar -->
+    <aside class="w-80 p-5">
+      <h1 class="text-4xl font-bold mb-10 ml-12 text-black">TrackIT</h1>
+      <nav>
+        <ul>
+          <li class="mb-4">
+            <button class="w-56 py-3 rounded-xl sidebar-button">Dashboard</button>
+          </li>
+          <li class="mb-4">
+            <button class="w-56 py-3 rounded-xl sidebar-button">Leaderboard</button>
+          </li>
+          <li>
+            <button id="profileWork" class="w-56 py-3 rounded-xl sidebar-button">Profile</button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content flex-1">
+      <div class="card">
+        <h2>Task Name: <span id="task-name">LogIn</span></h2>
+        <h3>Task Details</h3>
+        <p><strong>Assignee:</strong> <span id="assignee">Sadman</span></p>
+        <p><strong>Task Status:</strong> <span class="status">TO DO</span></p>
+        <button id="create-btn">Create Task</button>
+      </div>
+
+      <div class="card">
+        <h3>Description</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function navigateTo(page) {
+      window.location.href = page;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const createBtn = document.getElementById("create-btn");
+
+      createBtn.addEventListener("click", () => {
+        const taskName = document.getElementById("task-name").textContent;
+        const assignee = document.getElementById("assignee").textContent;
+        const status = document.querySelector(".status").textContent;
+
+        const taskDetails = { taskName, assignee, status };
+
+        console.log("Task Created:", taskDetails);
+        alert("Task successfully created!");
+      });
+    });
+  </script>
+</body>
+</html>

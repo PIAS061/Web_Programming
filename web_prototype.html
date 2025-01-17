@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="Css/web.css">
+  <style>
+    .delete {
+      background-color: #ff4d4f; /* Bright red for delete button */
+      color: white;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s ease-in-out;
+    }
+
+    .delete:hover {
+      background-color: #ff7875;
+      transform: scale(1.05);
+    }
+
+    .delete:active {
+      transform: scale(0.95);
+      background-color: #d9363e;
+    }
+
+    .done {
+      background-color: #4caf50; /* Green for the done button */
+      color: white;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s ease-in-out;
+    }
+
+    .done:hover {
+      background-color: #81c784; /* Lighter green on hover */
+      transform: scale(1.05);
+    }
+
+    .done:active {
+      transform: scale(0.95);
+      background-color: #388e3c; /* Slightly darker green on click */
+    }
+  </style>
+</head>
+<body class="pixel">
+  <div class="container">
+    <div class="sidebar">
+      <h1>TrackIT</h1>
+      <button onclick="navigateTo('trackit_prototype.html')">DashBoard</button>
+      <button onclick="navigateTo('leaderboard_prototype.html')">LeaderBoard</button>
+      <button onclick="navigateTo('profile_prototype.html')">Profile</button>
+    </div>
+    <div class="main">
+      <header>
+        <h2>Web Programming</h2>
+        <div class="search-bar">
+          <input type="text" placeholder="Search">
+          <img src="Resources/Search-Button-Black-PNG-Cutout.png" alt="Search Icon">
+        </div>
+        <div class="team-icons">
+          <img src="Resources/profile.avif" alt="">
+          <img src="Resources/profile.avif" alt="">
+          <span>+7</span>
+        </div>
+      </header>
+      <div class="kanban-board">
+        <div class="column" id="todo">
+          <h3>TO DO ☕</h3>
+          <div class="task" draggable="true">
+            <p>Design login and signup</p>
+            <button class="done">Done</button>
+            <button class="delete">Delete</button>
+          </div>
+          <button class="add-task">Add +</button>
+        </div>
+        <div class="column" id="in-progress">
+          <h3>IN PROGRESS 🍵</h3>
+          <div class="task" draggable="true">
+            <p>Work on UI styling</p>
+            <button class="done">Done</button>
+            <button class="delete">Delete</button>
+          </div>
+        </div>
+        <div class="column" id="done">
+          <h3>DONE 💤</h3>
+          <div class="task" draggable="true">
+            <p>Design and deployment complete</p>
+            <button class="delete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Enable drag-and-drop functionality
+    document.querySelectorAll('.task').forEach(task => {
+      task.addEventListener('dragstart', dragStart);
+    });
+
+    document.querySelectorAll('.column').forEach(column => {
+      column.addEventListener('dragover', dragOver);
+      column.addEventListener('drop', drop);
+    });
+
+    function dragStart(e) {
+      e.dataTransfer.setData('text/plain', e.target.id);
+      setTimeout(() => {
+        e.target.style.display = 'none';
+      }, 0);
+    }
+
+    function dragOver(e) {
+      e.preventDefault();
+    }
+
+    function drop(e) {
+      e.preventDefault();
+      const id = e.dataTransfer.getData('text');
+      const draggable = document.getElementById(id);
+      draggable.style.display = 'block';
+      e.target.appendChild(draggable);
+    }
+
+    // Add new tasks
+    document.querySelectorAll('.add-task').forEach(button => {
+      button.addEventListener('click', () => {
+        const taskText = prompt('Enter the task description:');
+        if (taskText) {
+          const newTask = document.createElement('div');
+          newTask.classList.add('task');
+          newTask.setAttribute('draggable', 'true');
+          newTask.innerHTML = `
+            <p>${taskText}</p>
+            <button class='done'>Done</button>
+            <button class='delete'>Delete</button>
+          `;
+
+          // Add event listeners for the new task
+          newTask.addEventListener('dragstart', dragStart);
+          newTask.querySelector('.done').addEventListener('click', markDone);
+          newTask.querySelector('.delete').addEventListener('click', deleteTask);
+
+          button.parentElement.insertBefore(newTask, button);
+        }
+      });
+    });
+
+    // Delete tasks
+    document.querySelectorAll('.delete').forEach(button => {
+      button.addEventListener('click', deleteTask);
+    });
+
+    function deleteTask(e) {
+      e.target.parentElement.remove();
+    }
+
+    // Mark tasks as done
+    document.querySelectorAll('.done').forEach(button => {
+      button.addEventListener('click', markDone);
+    });
+
+    function markDone(e) {
+      const task = e.target.parentElement;
+      const parentColumn = task.parentElement.id;
+
+      if (parentColumn === 'todo') {
+        document.getElementById('in-progress').appendChild(task);
+      } else if (parentColumn === 'in-progress') {
+        document.getElementById('done').appendChild(task);
+      }
+
+      // Remove the "Done" button if it's moved to "DONE"
+      if (parentColumn === 'in-progress') {
+        task.querySelector('.done').remove();
+      }
+    }
+    
+    function navigateTo(page) {
+      window.location.href = page; 
+    }
+  
+  </script>
+</body>
+</html>

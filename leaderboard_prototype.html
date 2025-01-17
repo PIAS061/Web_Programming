@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackIT Leaderboard</title>
+  <a href="profile.html"></a>
+  <script src="script.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    
+
+    /* Sidebar Styling */
+    aside {
+      background-color: #FFDEE9;
+      background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+    }
+
+    /* Sidebar Buttons */
+    .sidebar-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      background-color: #FFD1D1; /* Default button color */
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      background-color: #B5FFFC; /* Button hover color */
+      color: #333; /* Keep text color readable */
+    }
+
+    .sidebar-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Highlight Active Button */
+    .sidebar-button.active {
+      background-color: #FFD700; /* Golden color for active */
+      color: white;
+    }
+
+   #Sadman{
+    width: 850px;
+    height: 100px;
+    margin-left: 200px;
+   } 
+   #prapti{
+    width: 800px;
+    height: 100px;
+    margin-left: 200px;
+   }
+   #robin{
+    width: 750px;
+    height: 100px;
+    margin-left: 200px;
+
+   }
+   #awal{
+    width: 700px;
+    height: 100px;
+    margin-left: 200px;
+   }
+   #back2{
+    background-color: #0d4d52; /* Soft teal for a clean, fresh look */
+    background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
+   }
+  </style>
+</head>
+<body id="back2" class="bg-[#79461e] text-white min-h-screen flex">
+  <!-- Sidebar -->
+  <aside class="w-80 p-5">
+    <h1 class="text-4xl font-bold mb-10 ml-12 text-black">TrackIT</h1>
+    <nav>
+      <ul>
+        <li class="mb-4">
+          <button class="w-56 py-3 rounded-xl sidebar-button">DashBoard</button>
+        </li>
+        <li class="mb-4">
+          <button class="w-56 py-3 rounded-xl sidebar-button">LeaderBoard</button>
+        </li>
+        <li>
+          <button id="profileWork" class="w-56 py-3 rounded-xl sidebar-button">Profile</button>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-6">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-semibold">Top Contributors</h2>
+      <input
+        type="text"
+        placeholder="Search"
+        class="rounded-lg px-4 py-2 text-black"
+      />
+    </div>
+
+    <!-- Contributors List -->
+    <div class="space-y-6">
+      <div class="flex justify-between items-center bg-[#f1c9a8]  p-4 rounded-xl" id="Sadman">
+        <div class="flex items-center gap-4">
+          <img src="https://via.placeholder.com/50" alt="Sadman Sakib" class="rounded-full w-12 h-12">
+          <p class="text-[#5b3412] font-semibold">Sadman Sakib</p>
+        </div>
+        <div class="flex items-center gap-2 text-[#5b3412]">
+          <span>245</span>
+          <div class="bg-yellow-400 w-6 h-6 rounded-full"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center bg-[#f1c9a8] w-1/2 p-4 rounded-xl" id="prapti">
+        <div class="flex items-center gap-4">
+          <img src="https://via.placeholder.com/50" alt="Prapti Mojumder" class="rounded-full w-12 h-12">
+          <p class="text-[#5b3412] font-semibold">Prapti Mojumder</p>
+        </div>
+        <div class="flex items-center gap-2 text-[#5b3412]">
+          <span>145</span>
+          <div class="bg-yellow-400 w-6 h-6 rounded-full"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center bg-[#f1c9a8] p-4 rounded-xl" id="robin">
+        <div class="flex items-center gap-4">
+          <img src="https://via.placeholder.com/50" alt="Software Management Project" class="rounded-full w-12 h-12">
+          <p class="text-[#5b3412] font-semibold">Software Management Project</p>
+        </div>
+        <div class="flex items-center gap-2 text-[#5b3412]">
+          <span>45</span>
+          <div class="bg-yellow-400 w-6 h-6 rounded-full"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center bg-[#f1c9a8] p-4 rounded-xl " id="awal">
+        <div class="flex items-center gap-4">
+          <img src="https://via.placeholder.com/50" alt="Security Management Project" class="rounded-full w-12 h-12">
+          <p class="text-[#5b3412] font-semibold">Security Management Project</p>
+        </div>
+        <div class="flex items-center gap-2 text-[#5b3412]">
+          <span>15</span>
+          <div class="bg-yellow-400 w-6 h-6 rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

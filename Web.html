@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="Css/web.css">
+</head>
+<body class="pixel">
+  <div class="container">
+    <div class="sidebar">
+      <h1>TrackIT</h1>
+      <button>DashBoard</button>
+      <button>LeaderBoard</button>
+      <button>Profile</button>
+    </div>
+    <div class="main">
+      <header>
+        <h2>Web Programming</h2>
+        <div class="search-bar">
+          <input type="text" placeholder="Search">
+          <img src="search-icon.png" alt="Search Icon">
+        </div>
+        <div class="team-icons">
+          <img src="#" alt="">
+          <img src="#" alt="">
+          <span>+7</span>
+        </div>
+      </header>
+      <div class="kanban-board">
+        <div class="column" id="todo">
+          <h3>TO DO ☕</h3>
+          <div class="task" draggable="true">
+            <button class="delete">In Progress</button>
+            <button class="delete">Delete</button>
+          </div>
+          <button class="add-task">Add +</button>
+        </div>
+        <div class="column" id="in-progress">
+          <h3>IN PROGRESS 🍵</h3>
+          <div class="task" draggable="true">
+            <p>Design, login, and signup</p>
+            <!-- <span>Prapti Requested for Approval</span> -->
+          </div>
+          <span>Prapti Requested for Approval</span>
+        </div>
+        <div class="column" id="done">
+          <h3>DONE 💤</h3>
+          <div class="task" draggable="true">
+            <p>Design, login, and signup</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for Kanban Board Interactivity
+
+// Enable drag-and-drop functionality
+document.querySelectorAll('.task').forEach(task => {
+  task.addEventListener('dragstart', dragStart);
+});
+
+document.querySelectorAll('.column').forEach(column => {
+  column.addEventListener('dragover', dragOver);
+  column.addEventListener('drop', drop);
+});
+
+function dragStart(e) {
+  e.dataTransfer.setData('text/plain', e.target.id);
+  setTimeout(() => {
+    e.target.style.display = 'none';
+  }, 0);
+}
+
+function dragOver(e) {
+  e.preventDefault();
+}
+
+function drop(e) {
+  e.preventDefault();
+  const id = e.dataTransfer.getData('text');
+  const draggable = document.getElementById(id);
+  draggable.style.display = 'block';
+  e.target.appendChild(draggable);
+}
+
+// Add new tasks
+document.querySelectorAll('.add-task').forEach(button => {
+  button.addEventListener('click', () => {
+    const taskText = prompt('Enter the task description:');
+    if (taskText) {
+      const newTask = document.createElement('div');
+      newTask.classList.add('task');
+      newTask.setAttribute('draggable', 'true');
+      newTask.innerHTML = `<p>${taskText}</p><button class='delete'>Delete</button>`;
+
+      // Add event listeners for new task
+      newTask.addEventListener('dragstart', dragStart);
+      newTask.querySelector('.delete').addEventListener('click', deleteTask);
+
+      button.parentElement.insertBefore(newTask, button);
+    }
+  });
+});
+
+// Delete tasks
+document.querySelectorAll('.delete').forEach(button => {
+  button.addEventListener('click', deleteTask);
+});
+
+function deleteTask(e) {
+  e.target.parentElement.remove();
+}
+
+  </script>
+</body>
+</html>

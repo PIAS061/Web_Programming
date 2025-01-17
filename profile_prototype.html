@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackIT Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Sidebar Styling */
+    aside {
+      background-color: #FFDEE9;
+      background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+    }
+
+    /* Sidebar Buttons */
+    .sidebar-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      background-color: #FFD1D1; /* Default button color */
+    }
+
+    .sidebar-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      background-color: #B5FFFC; /* Button hover color */
+      color: #333; /* Keep text color readable */
+    }
+
+    .sidebar-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Highlight Active Button */
+    .sidebar-button.active {
+      background-color: #FFD700; /* Golden color for active */
+      color: white;
+    }
+
+    /* Profile Card Styling */
+    .profile-card {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-card:hover {
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Smooth transitions for all hover effects */
+    .sidebar-button, .profile-card {
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Page Background */
+    body {
+      background-color: #0d4d52; /* Soft teal for a clean, fresh look */
+      background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 600;
+    }
+
+    p, span {
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body class="text-white">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-80 p-5">
+      <h1 class="text-4xl font-bold mb-10 ml-12 text-black">TrackIT</h1>
+      <nav>
+        <ul>
+          <li class="mb-4">
+            <button class="w-56 py-3 rounded-xl sidebar-button">DashBoard</button>
+          </li>
+          <li class="mb-4">
+            <button class="w-56 py-3 rounded-xl sidebar-button">LeaderBoard</button>
+          </li>
+          <li>
+            <button id="profileWork" class="w-56 py-3 rounded-xl sidebar-button">Profile</button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Profile Section -->
+    <div class="w-3/4 p-10">
+      <div class="flex items-center space-x-8">
+        <img src="/IMG_20241114_214444.jpg" alt="Profile Picture" class="w-32 h-32 rounded-full border-4 border-[#FFECC9]">
+        <div>
+          <h2 class="text-2xl font-bold text-black">Name</h2>
+          <p class="text-xl text-black">Robiul Awal</p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-black">Role</h2>
+          <p class="text-xl text-black">Manager</p>
+        </div>
+        <div class="items-center">
+          <h2 class="text-2xl font-bold text-black">Score</h2>
+          <div class="flex items-center ml-2">
+            <span class="text-black text-3xl">🏆</span>
+            <p class="text-xl text-black ml-2">275</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12">
+        <h3 class="text-2xl font-bold mb-4 text-black">About</h3>
+        <div class="space-y-4 bg-[#eae5e3e4] p-6 rounded-lg profile-card">
+          <div class="flex justify-between">
+            <span class="font-semibold text-black">Department</span>
+            <span class="text-black">Computer Science and Engineering</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-semibold text-black">Institution</span>
+            <span class="text-black">United International University</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-semibold text-black">Job Title</span>
+            <span class="text-black">Software Engineer</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-semibold text-black">Contact</span>
+            <span class="text-black">Sadman@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

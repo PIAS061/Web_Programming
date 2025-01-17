@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Project</title>
+<link rel="stylesheet" href="Css/Creating_Project.css">
+<script src="js/progress2.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* Body Styling */
+    body {
+      background-color: #0d4d52; /* Soft teal for a clean, fresh look */
+      background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
+      color: white; /* Text color */
+    }
+
+    /* Sidebar Styling */
+    aside {
+      background-color: #FFDEE9;
+      background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+    }
+
+    /* Sidebar Buttons */
+    .sidebar-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      background-color: #FFD1D1; /* Default button color */
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      background-color: #B5FFFC; /* Button hover color */
+      color: #333; /* Keep text color readable */
+    }
+
+    .sidebar-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Main Content Styling */
+    .main {
+      color: #333; /* Set text color for main content */
+    }
+
+    .form-field label {
+      color: #333; /* Set label color */
+    }
+    .form-field input {
+      color: #333; /* Set input field color */
+    }
+    .form-field textarea {
+      color: #333; /* Set textarea color */
+    }
+    .assignee-item {
+      color: #333; /* Set assignee list item color */
+    }
+    .submit-button {
+      background-color: #FFD700; /* Golden color for main button */
+      color: white; /* Text color */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .submit-button:hover {
+      background-color: #FFC107; /* Darker shade on hover */
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="w-80 p-5">
+      <h1 class="text-4xl font-bold mb-10 ml-12 text-black">TrackIT</h1>
+      <nav>
+        <ul>
+          <li class="mb-4">
+            <button class="w-56 py-3 rounded-xl sidebar-button">DashBoard</button>
+          </li>
+          <li class="mb-4">
+            <button class="w-56 py-3 rounded-xl sidebar-button">LeaderBoard</button>
+          </li>
+          <li>
+            <button id="profileWork" class="w-56 py-3 rounded-xl sidebar-button">Profile</button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="main">
+      <header>
+        <h2 class="text-white">Creating A New Project</h2>
+      </header>
+      <div class="form-container">
+        <div class="form-field">
+            <label class="block text-lg font-bold mb-2">Project Name</label>
+            <p class="ml-5 font-bold">Task Track</p>
+        </div>
+        <div class="form-field">
+          <label for="summary">Summary</label>
+          <input type="text" id="summary" placeholder="Enter summary">
+        </div>
+        <div class="form-field">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Enter description"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="reporter">Reporter</label>
+          <input type="text" id="reporter" value="Prapti Mojumder" disabled>
+        </div>
+        <div class="form-field">
+          <label for="assignee">Assignee</label>
+          <div class="assignee-dropdown">
+            <input type="text" id="assignee-search" placeholder="Search assignee">
+             <div class="assignee-list">
+              <div class="assignee-item">Sadman Sakib</div>
+              <div class="assignee-item">Prapti Mojumder</div>
+              <div class="assignee-item">Robin</div>
+              <div class="assignee-item">Awal</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-field">
+          <button type="submit" class="submit-button">Create Project</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

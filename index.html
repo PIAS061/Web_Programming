@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Signup Form</title>
+  <style>
+    /* General body styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d4d52; /* Soft teal for a clean, fresh look */
+      background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Form container styling */
+    form {
+      padding: 20px;
+      border-radius: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 75%;
+      max-width: 350px;
+      opacity: 0.95;
+      background-color: rgba(255, 255, 255, 0.65);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 0.95; }
+    }
+
+    /* Input group styling */
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+      color: #333; /* Dark text for better readability */
+    }
+
+    input:focus, select:focus {
+      border-color: #ffc107;
+      outline: none;
+      box-shadow: 0 0 5px rgba(255, 193, 7, 0.7);
+    }
+
+    /* Error message styling */
+    .error-message {
+      color: red;
+      font-size: 12px;
+      text-align: left;
+      margin-top: 5px;
+      display: none;
+    }
+
+    /* Success message */
+    #successMessage {
+      margin-top: 20px;
+      color: green;
+      font-size: 14px;
+      display: none;
+    }
+
+    /* Button styling */
+    button {
+      width: 80%;
+      padding: 10px;
+      background-color: yellow;
+      color: #000; /* Dark text for better contrast */
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #B5FFFC; /* Button hover background */
+      transform: scale(1.05);
+    }
+
+    button:disabled {
+      background-color: #d4d4d4;
+      cursor: not-allowed;
+    }
+
+    button:focus {
+      outline: none;
+      border: 2px solid #ffc107;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      form {
+        padding: 15 px;
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <form id="signupForm">
+    <h2>Sign Up</h2>
+    <div class="input-group">
+      <input type="text" id="firstName" placeholder="Enter Your First Name">
+      <small class="error-message" id="firstNameError"></small>
+    </div>
+    <div class="input-group">
+      <input type="text" id="lastName" placeholder="Enter Your Last Name">
+      <small class="error-message" id="lastNameError"></small>
+    </div>
+    <div class="input-group">
+      <input type="email" id="email" placeholder="Enter Your Email">
+      <small class="error-message" id="emailError"></small>
+    </div>
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Enter Password">
+      <small class="error-message" id="passwordError"></small>
+    </div>
+    <div class="input-group">
+      <select id="workAs">
+        <option value="">--Work As--</option>
+        <option value="Manager">Manager</option>
+        <option value="Developer">Developer</option>
+      </select>
+      <small class="error-message" id="workAsError"></small>
+    </div>
+    <button type="button" id="signupButton">Sign Up</button>
+    <div id="successMessage">Signup Successful! Redirecting...</div>
+  </form>
+
+  <script>
+    document.getElementById('signupButton').addEventListener('click', function () {
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const workAs = document.getElementById('workAs').value;
+
+      const firstNameError = document.getElementById('firstNameError');
+      const lastNameError = document.getElementById('lastNameError');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      const workAsError = document.getElementById('workAsError');
+      const successMessage = document.getElementById('successMessage');
+
+      // Reset errors
+      firstNameError.style.display = 'none';
+      lastNameError.style.display = 'none';
+      emailError.style.display = 'none';
+      passwordError.style.display = 'none';
+      workAsError.style.display = 'none';
+      successMessage.style.display = 'none';
+
+      let isValid = true;
+
+      // Validation
+      if (!firstName) {
+        firstNameError.textContent = 'First name is required.';
+        firstNameError.style.display = 'block';
+        isValid = false;
+      }
+
+      if (!lastName) {
+        lastNameError.textContent = 'Last name is required.';
+        lastNameError.style.display = 'block';
+        isValid = false;
+      }
+
+      if (!email) {
+        emailError.textContent = 'Email is required.';
+        emailError.style.display = 'block';
+        isValid = false;
+      }
+
+      if (!password) {
+        passwordError.textContent = 'Password is required.';
+        passwordError.style.display = 'block';
+        isValid = false;
+      }
+
+      if (!workAs) {
+        workAsError.textContent = 'Please select your role.';
+        workAsError.style.display = 'block';
+        isValid = false;
+      }
+
+      // If valid
+      if (isValid) {
+        successMessage.style.display = 'block';
+        document.getElementById('signupButton').disabled = true;
+
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 500);
+      }
+    });
+  </script>
+</body>
+</html>

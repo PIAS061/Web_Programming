@@ -1,0 +1,202 @@
+
+    /* General Reset */
+body, h1, h2, h3, p, button {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+        
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: #FFDEE9;
+  background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+  color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar h1 {
+  margin-bottom: 45px;
+}
+
+/* Sidebar Buttons */
+.sidebar button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  background-color: #FFD1D1; /* Default button color */
+  transition: all 0.3s ease-in-out;
+  width: 75%; /* Make buttons span the full width of the sidebar */
+  padding: 12px 15px; /* Add padding to buttons */
+  border: none; /* Remove default button border */
+  border-radius: 8px; /* Add rounded corners */
+  margin-bottom: 13px; /* Space between buttons */
+}
+
+.sidebar button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background-color: #B5FFFC; /* Button hover color */
+  color: #333; /* Keep text color readable */
+}
+
+.sidebar button:active {
+  transform: scale(0.95);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Highlight Active Button */
+.sidebar button.active {
+  background-color: #FFD1D1; /* Golden color for active */
+  color: #333;
+}
+
+/* Main Content */
+.main {
+  padding-top: 20px;
+  width: 80%;
+  padding: 20px;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header h2 {
+  color: #333;
+  font-size: 40px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 55px;
+}
+
+.search-bar input {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.search-bar img{
+  height: 22px;
+  width: 25px;
+}
+.team-icons {
+  display: flex;
+  align-items: center;
+  
+
+}
+
+.team-icons img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.team-icons span {
+  font-size: 14px;
+  color: #6b4226;
+}
+
+/* Kanban Board */
+.kanban-board {
+  margin-top: 35px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: center;
+
+}
+
+.column {
+  width: 30%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+}
+
+.column h3 {
+  margin-bottom: 15px;
+  color: #6b4226;
+
+}
+
+.task {
+  background-color: #ffe4c4;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 12px;
+  cursor: grab;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.task p {
+  font-size: 14px;
+  color: #333;
+}
+
+.task .delete {
+  background-color: #ff6b6b;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.task .delete:hover {
+  background-color: #ff4c4c;
+}
+
+.add-task {
+  background-color: #6b4226;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.add-task:hover {
+  background-color: #8b5a2b;
+}
+.pixel{
+  background-color: #0d4d52; /* Soft teal for a clean, fresh look */
+  background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
+
+      
+       
+    }
