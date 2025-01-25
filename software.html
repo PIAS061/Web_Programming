@@ -1,155 +1,214 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TrackIT Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/software.js"></script>
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="Css/web.css">
   <style>
-    #pixel{
-        background-color: #0d4d52; /* Soft teal for a clean, fresh look */
-        background-image: linear-gradient(62deg, #538e8e 0%, #FFE6FA 100%);
-    }
-    /* Sidebar Styling */
-    aside {
-      background-color: #FFDEE9;
-      background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
-      width: 200px; /* Adjust width as needed */
-      padding: 20px;
-      text-align: center;
-    }
-
-    /* Sidebar Buttons */
-    .sidebar-button {
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-      font-size: 1rem;
+    .delete {
+      background-color: #ff4d4f; /* Bright red for delete button */
+      color: white;
+      padding: 6px 10px;
+      font-size: 0.9rem;
       font-weight: bold;
-      color: #333;
-      background-color: #FFD1D1; /* Default button color */
-      transition: all 0.3s ease-in-out;
-      width: 100%; /* Make buttons span the full width of the sidebar */
-      padding: 12px 15px; /* Add padding to buttons */
-      border: none; /* Remove default button border */
-      border-radius: 5px; /* Add rounded corners */
-      margin-bottom: 5px; /* Space between buttons */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s ease-in-out;
     }
 
-    .sidebar-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-      background-color: #B5FFFC; /* Button hover color */
-      color: #333; /* Keep text color readable */
+    .delete:hover {
+      background-color: #ff7875;
+      transform: scale(1.05);
     }
 
-    .sidebar-button:active {
+    .delete:active {
       transform: scale(0.95);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      background-color: #d9363e;
     }
 
-    /* Highlight Active Button */
-    .sidebar-button.active {
-      background-color: #FFD1D1; /* Golden color for active */
-      color: #333;
+    .done {
+      background-color: #4caf50; /* Green for the done button */
+      color: white;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s ease-in-out;
+    }
+
+    .done:hover {
+      background-color: #81c784; /* Lighter green on hover */
+      transform: scale(1.05);
+    }
+
+    .done:active {
+      transform: scale(0.95);
+      background-color: #388e3c; /* Slightly darker green on click */
+    }
+
+    .task {
+      padding: 10px;
+      margin: 10px 0;
+      background-color: #f4f4f4;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: grab;
+    }
+
+    .task:active {
+      cursor: grabbing;
+    }
+
+    .column {
+      min-height: 200px;
     }
   </style>
 </head>
-<body class="bg-orange-800 font-sans min-h-screen">
-
-  <!-- Main Layout -->
-  <div class="flex h-screen">
-    <!-- Sidebar -->
-    <aside class="w-80 p-5">
-        <h1 class="text-4xl font-bold mb-10 ml-12 text-black">TrackIT</h1>
-        <nav>
-          <ul>
-            <li class="mb-4">
-              <button id="dashboardBtn" class="w-56 py-3 rounded-xl sidebar-button active" onclick="navigateTo('trackit_prototype.html')">DashBoard</button>
-            </li>
-            <li class="mb-4">
-              <button id="leaderboardBtn" class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('leaderboard_prototype.html')">LeaderBoard</button>
-            </li>
-            <li>
-              <button id="profileBtn" class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('profile_prototype.html')">Profile</button>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-
-    <!-- Content -->
-    <main id="pixel" class="w-4/5 bg-orange-200 p-10">
-      <!-- Header -->
-      <header class="flex justify-between items-center mb-8">
-        <h2 class="text-4xl font-bold text-black">Software Project Management</h2>
-        <div class="flex items-center space-x-4">
-         <div class="flex">
-            <input  type="search" name="" id="" placeholder="search" class="px-4 py-2 rounded-full bg-white text-black placeholder-gray-500 border border-gray-300 focus:ring-2 focus:ring-orange- 500" >
-         </div>
-
-          <div class="flex -space-x-2">
-            <img
-              src="Resources/profile.avif"
-              alt="Avatar 1"
-              class="w-10 h-10 rounded-full border-2 border-white"
-            />
-            <img
-              src="Resources/profile.avif"
-              alt="Avatar 2"
-              class="w-10 h-10 rounded-full border-2 border-white"
-            />
-            <img
-              src="Resources/profile.avif"
-              alt="Avatar 3"
-              class="w-10 h-10 rounded-full border-2 border-white"
-            />
-          </div>
-          <span class="text-lg font-medium text-orange-900">7+</span>
+<body class="pixel">
+  <div class="container">
+    <div class="sidebar">
+      <h1>TrackIT</h1>
+      <button onclick="navigateTo('trackit_prototype.html')">DashBoard</button>
+      <button onclick="navigateTo('leaderboard_prototype.html')">LeaderBoard</button>
+      <button onclick="navigateTo('profile_prototype.html')">Profile</button>
+    </div>
+    <div class="main">
+      <header>
+        <h2>Software management project
+        </h2>
+        <div class="search-bar">
+          <input type="text" placeholder="Search">
+          <img src="Resources/Search-Button-Black-PNG-Cutout.png" alt="Search Icon">
+        </div>
+        <div class="team-icons">
+          <img src="Resources/profile.avif" alt="">
+          <img src="Resources/profile.avif" alt="">
+          <span>+7</span>
         </div>
       </header>
-
-      <!-- Task Board -->
-      <section class="grid grid-cols-3 gap-6">
-        <!-- To Do Column -->
-        <div class="bg-white rounded-lg p-6 shadow-lg">
-          <h3 class="text-lg font-bold text-center mb-4 text-orange-800">TO DO ☕</h3>
-          <div class="bg-orange-100 p-4 rounded-lg mb-4 shadow-md">
-            <div class="flex items-center space-x-2">
-              <img src="Resources/profile.avif" alt="Avatar" class="w-8 h-8 rounded-full">
-              <p>Design, login, and signup</p>
-            </div>
+      <div class="kanban-board">
+        <div class="column" id="todo">
+          <h3>TO DO ☕</h3>
+          <div class="task" id="task-1" draggable="true">
+            <p>Design login and signup</p>
+            <button class="done">Done</button>
+            <button class="delete">Delete</button>
           </div>
-          <button class="block w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
-            Add +
-          </button>
+          <button class="add-task">Add +</button>
         </div>
-        <!-- In Progress Column -->
-        <div class="bg-white rounded-lg p-6 shadow-lg">
-          <h3 class="text-lg font-bold text-center mb-4 text-orange-800">IN PROGRESS ☕</h3>
-          <div class="bg-orange-100 p-4 rounded-lg mb-4 shadow-md">
-            <div class="flex items-center space-x-2">
-              <img src="Resources/profile.avif" alt="Avatar" class="w-8 h-8 rounded-full">
-              <p>Design, login, and signup</p>
-            </div>
-          </div>
-          <p class="text-sm text-gray-600 mt-2 text-center">Prapti Requested for Approval</p>
-        </div>
-        <!-- Done Column -->
-        <div class="bg-white rounded-lg p-6 shadow-lg">
-          <h3 class="text-lg font-bold text-center mb-4 text-orange-800">DONE ☕</h3>
-          <div class="bg-orange-100 p-4 rounded-lg mb-4 shadow-md">
-            <div class="flex items-center space-x-2">
-              <img src="Resources/profile.avif" alt="Avatar" class="w-8 h-8 rounded-full">
-              <p>Design, login, and signup</p>
-            </div>
+        <div class="column" id="in-progress">
+          <h3>IN PROGRESS 🍵</h3>
+          <div class="task" id="task-2" draggable="true">
+            <p>Work on UI styling</p>
+            <button class="done">Done</button>
+            <button class="delete">Delete</button>
           </div>
         </div>
-      </section>
-    </main>
+        <div class="column" id="done">
+          <h3>DONE 💤</h3>
+          <div class="task" id="task-3" draggable="true">
+            <p>Design and deployment complete</p>
+            <button class="delete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-    <script>
+
+  <script>
+    // Enable drag-and-drop functionality
+    document.querySelectorAll('.task').forEach(task => {
+      task.addEventListener('dragstart', dragStart);
+    });
+
+    document.querySelectorAll('.column').forEach(column => {
+      column.addEventListener('dragover', dragOver);
+      column.addEventListener('drop', drop);
+    });
+
+    function dragStart(e) {
+      e.dataTransfer.setData('text/plain', e.target.id);
+    }
+
+    function dragOver(e) {
+      e.preventDefault();
+    }
+
+    function drop(e) {
+      e.preventDefault();
+      const id = e.dataTransfer.getData('text');
+      const draggable = document.getElementById(id);
+      if (e.target.classList.contains('column')) {
+        e.target.appendChild(draggable);
+      } else {
+        e.target.closest('.column').appendChild(draggable);
+      }
+    }
+
+    // Add new tasks
+    document.querySelectorAll('.add-task').forEach(button => {
+      button.addEventListener('click', () => {
+        const taskText = prompt('Enter the task description:');
+        if (taskText) {
+          const newTask = document.createElement('div');
+          newTask.classList.add('task');
+          newTask.setAttribute('draggable', 'true');
+          const taskId = `task-${Date.now()}`;
+          newTask.id = taskId;
+          newTask.innerHTML = `
+            <p>${taskText}</p>
+            <button class='done'>Done</button>
+            <button class='delete'>Delete</button>
+          `;
+
+          // Add event listeners for the new task
+          newTask.addEventListener('dragstart', dragStart);
+          newTask.querySelector('.done').addEventListener('click', markDone);
+          newTask.querySelector('.delete').addEventListener('click', deleteTask);
+
+          button.parentElement.insertBefore(newTask, button);
+        }
+      });
+    });
+
+    // Delete tasks
+    document.querySelectorAll('.delete').forEach(button => {
+      button.addEventListener('click', deleteTask);
+    });
+
+    function deleteTask(e) {
+      e.target.parentElement.remove();
+    }
+
+    // Mark tasks as done
+    document.querySelectorAll('.done').forEach(button => {
+      button.addEventListener('click', markDone);
+    });
+
+    function markDone(e) {
+      const task = e.target.parentElement;
+      const parentColumn = task.parentElement.id;
+
+      if (parentColumn === 'todo') {
+        document.getElementById('in-progress').appendChild(task);
+      } else if (parentColumn === 'in-progress') {
+        document.getElementById('done').appendChild(task);
+      }
+
+      // Remove the "Done" button if it's moved to "DONE"
+      if (parentColumn === 'in-progress') {
+        task.querySelector('.done').remove();
+      }
+    }
+
     function navigateTo(page) {
       window.location.href = page; 
     }
-    </script>
+  </script>
 </body>
 </html>
