@@ -80,12 +80,13 @@
 <body id="back" class="flex items-center justify-center min-h-screen">
   <div class="bg-white rounded-lg p-6 shadow-lg w-1/4">
     <h2 class="text-center text-xl font-bold text-black mb-4">Login</h2>
-    <form id="loginForm" class="space-y-4">
+    <form action="login.php" method="POST">
       <!-- Email Field -->
       <div>
         <input
           type="email"
           id="email"
+          name="email1"
           placeholder="Enter your Email"
           aria-label="Email"
           required
@@ -99,6 +100,7 @@
         <input
           type="password"
           id="name"
+          name="password1"
           placeholder="Enter your Password"
           aria-label="Name"
           required
@@ -109,15 +111,24 @@
 
       <!-- Login Button -->
       <button
-        type="button"
+        type="submit"
         id="loginButton"
         class="w-full py-2 text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition duration-200 font-bold">
         Log in
       </button>
     </form>
   </div>
-
   <script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("name").value;
+  
+      console.log("Email:", email);
+      console.log("Password:", password);
+    });
+  </script>
+
+  <!-- <script>
     document.getElementById('loginButton').addEventListener('click', function () {
       const email = document.getElementById('email').value.trim();
       const name = document.getElementById('name').value.trim();
@@ -130,17 +141,7 @@
 
       let isValid = true;
 
-      // Email Validation
-      if (!email) {
-        emailError.textContent = 'Email is required.';
-        emailError.classList.remove('hidden');
-        isValid = false;
-      } else if (!validateEmail(email)) {
-        emailError.textContent = 'Please enter a valid email address.';
-        emailError.classList.remove('hidden');
-        isValid = false;
-      }
-
+      
       // Name Validation
       if (!name) {
         nameError.textContent = 'Name is required.';
@@ -155,17 +156,11 @@
         loginButton.disabled = true;
 
         // Simulate a delay for login process
-        setTimeout(() => {
-          window.location.href = 'trackit_prototype.html'; // Redirect to another page
-        }, 500);
+        
       }
     });
 
-    // Helper function for email validation
-    function validateEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
-    }
-  </script>
+    
+  </script> -->
 </body>
 </html>

@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="Css/test.css">
 </head>
 <body>
-  <form id="signupForm">
+  <form id="signupForm"  action="signup_process.php" method="post">
     <h2>Sign Up</h2>
-    <input type="text" id="firstName" placeholder="Enter Your First Name">
-    <input type="text" id="lastName" placeholder="Enter Your Last Name">
-    <input type="email" id="email" placeholder="Enter Your Email">
-    <input type="password" id="password" placeholder="Enter Password">
-    <select id="workAs">
+    <input type="text" id="firstName" name="firstName" placeholder="Enter Your First Name">
+    <input type="text" id="lastName" name="lastName" placeholder="Enter Your Last Name">
+    <input type="email" id="email" name="email" placeholder="Enter Your Email">
+    <input type="password" id="password" name="password" placeholder="Enter Password">
+    <select id="workAs" name="workAs">
       <option value="">--Work As--</option>
       <option value="Doctor">Manager</option>
       <option value="Engineer">Developer</option>
@@ -22,6 +22,6 @@
     <button type="button" id="signupButton" class="w-full">Sign Up</button>
   </form>
 
-  <script src="js/script2.js"></script>
+  <!-- <script src="js/script2.js"></script> -->
 </body>
 </html>

@@ -46,6 +46,8 @@
     /* Main Content Styling */
     .main {
       color: #333; /* Set text color for main content */
+      width: 60vw;
+      height: 100vh;
     }
 
     .form-field label {
@@ -91,6 +93,7 @@
         </ul>
       </nav>
     </aside>
+    <form action="creatPrototype.php" method="POST">
     <div class="main">
       <header>
         <h2 class="text-white">Creating A New Project</h2>
@@ -98,37 +101,54 @@
       <div class="form-container">
         <div class="form-field">
             <label class="block text-lg font-bold mb-2">Project Name</label>
-            <p class="ml-5 font-bold">Task Track</p>
+            <input type="text" name="projectName" id="projectName" placeholder="Enter Project Name"> 
         </div>
         <div class="form-field">
           <label for="summary">Summary</label>
-          <input type="text" id="summary" placeholder="Enter summary">
+          <input type="text" name="summary" id="summary" placeholder="Enter summary">
         </div>
         <div class="form-field">
-          <label for="description">Description</label>
-          <textarea id="description" placeholder="Enter description"></textarea>
+          <label for="description" >Description</label>
+          <textarea id="description" name="description" placeholder="Enter description"></textarea>
         </div>
         <div class="form-field">
           <label for="reporter">Reporter</label>
-          <input type="text" id="reporter" value="Prapti Mojumder" disabled>
-        </div>
-        <div class="form-field">
-          <label for="assignee">Assignee</label>
-          <div class="assignee-dropdown">
-            <input type="text" id="assignee-search" placeholder="Search assignee">
-             <div class="assignee-list">
-              <div class="assignee-item">Sadman Sakib</div>
-              <div class="assignee-item">Prapti Mojumder</div>
-              <div class="assignee-item">Robin</div>
-              <div class="assignee-item">Awal</div>
-            </div>
-          </div>
+          <input type="text" name="reporter" id="reporter" value="Prapti Mojumder" >
         </div>
         <div class="form-field">
           <button type="submit" class="submit-button">Create Project</button>
         </div>
       </div>
     </div>
+   </form>
   </div>
+  <script>
+    // Attach event listener to the form's submit event
+    document.querySelector("form").addEventListener("submit", function (e) {
+        // Prevent default form submission behavior
+        e.preventDefault();
+  
+        // Get form field values
+        const projectName = document.getElementById("projectName").value.trim();
+        const summary = document.getElementById("summary").value.trim();
+        const description = document.getElementById("description").value.trim();
+        const reporter = document.getElementById("reporter").value.trim();
+  
+        // Log field values to the console
+        console.log("Project Name:", projectName);
+        console.log("Summary:", summary);
+        console.log("Description:", description);
+        console.log("Reporter:", reporter);
+        // Check if all fields are filled
+        if (!projectName || !summary || !description || !reporter) {
+            alert("Please fill in all the fields before submitting.");
+            return;
+        }
+  
+        // If everything is valid, allow submission (you can remove this if testing only logging)
+        this.submit();
+    });
+  </script>
+  
 </body>
 </html>

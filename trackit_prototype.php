@@ -1,3 +1,20 @@
+<?php
+  session_start();
+  include 'database.php';
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  
+  // Check for connection errors
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  } 
+
+  $sql = "SELECT * FROM Project_Details";
+    $all_projects = mysqli_query($conn, $sql);
+
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,13 +113,13 @@
         <nav>
           <ul>
             <li class="mb-4">
-              <button class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('trackit_prototype.html')">DashBoard</button>
+              <button class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('trackit_prototype.php')">DashBoard</button>
             </li>
             <li class="mb-4">
-              <button class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('leaderboard_prototype.html')">LeaderBoard</button>
+              <button class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('leaderboard_prototype.php')">LeaderBoard</button>
             </li>
             <li>
-              <button id="profileWork" class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('profile_prototype.html')">Profile</button>
+              <button id="profileWork" class="w-56 py-3 rounded-xl sidebar-button" onclick="navigateTo('profile_prototype.php')">Profile</button>
             </li>
           </ul>
         </nav>
@@ -118,32 +135,45 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
           </h2>
-          
-          
-          
-        <div class="flex items-center space-x-3">
+        <!-- <div class="flex items-center space-x-3">
           <input type="text" placeholder="Search" class="py-2 px-4 border rounded-lg">
           <button class="py-2 px-4 mb-2 bg-yellow-400 hover:bg-yellow-500 text-white rounded-lg transition-all">
             Search
           </button>
-        </div>
+        </div> -->
       </header>
 
+      <?php
+        while( $row = mysqli_fetch_assoc($all_projects)){
+      ?>
       <!-- Project Cards -->
       <div class="space-y-6">
-        <div id="navigateToPage1" class="bg-orange-100 opacity-80 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold" onclick="navigateTo('web_prototype.html')">
-          Web Management Project
-        </div>
-        <div id="navigateToPage2" class="bg-orange-100 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold opacity-80" onclick="navigateTo('security_prototype.html')">
-          Security Management Project
-        </div>
-        <div id="navigateToPage3" class="bg-orange-100 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold opacity-80" onclick="navigateTo('software.html')">
-          Software Management Project
-        </div>
-        <div id="navigateToPage4" class="bg-orange-100 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold opacity-80" onclick="navigateTo('security_prototype.html')">
-          Security Management Project
-        </div>
+          <div id="navigateToPage1" class="bg-orange-100 opacity-80 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold flex justify-between items-center" onclick="navigateTo('timeline.php')">
+            <span><?php echo $row["projectName"] ?></span>
+
+            <form action="trackit_prototype_delete.php" method="POST">
+              <input type= hidden name="id" value="<?php echo $row ['id']; ?>">
+            <button class="py-2 px-1 hover:bg-red-600 text-black rounded-lg transition-all flex items-center space-x-2" type= submit >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.137 21H7.863a2 2 0 01-1.996-1.858L5 7m5-4h4m-4 0a1 1 0 00-1 1v1h6V4a1 1 0 00-1-1m-4 0h4" />
+              </svg>
+              <span>Delete</span>
+            </button>
+            </form>
+
+          </div>
+        <br>
       </div>
+
+      <!-- <div class="space-y-6">
+        <div id="navigateToPage1" class="bg-orange-100 opacity-80 p-5 h-28 rounded-xl shadow-lg text-xl font-semibold" onclick="navigateTo('web_prototype.html')">
+         <?php echo $row["projectName"] ?>
+        </div>
+        <br>
+      </div>
+      <?php
+        }
+      ?> -->
     </main>
   </div>
 

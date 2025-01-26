@@ -118,37 +118,55 @@
         width: 100%;
       }
     }
+    .login-link {
+      margin-top: 25px; /* Adjust the spacing as needed */
+      font-size: 14px;
+      color: black;
+    }
+
+    .login-link a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <form id="signupForm">
+  <form id="signupForm" action="signup_process.php" method="post" >
     <h2>Sign Up</h2>
     <div class="input-group">
-      <input type="text" id="firstName" placeholder="Enter Your First Name">
+      <input type="text" id="firstName" name="first_name" placeholder="Enter Your First Name">
       <small class="error-message" id="firstNameError"></small>
     </div>
     <div class="input-group">
-      <input type="text" id="lastName" placeholder="Enter Your Last Name">
+      <input type="text" id="lastName" name="last_name" placeholder="Enter Your Last Name">
       <small class="error-message" id="lastNameError"></small>
     </div>
     <div class="input-group">
-      <input type="email" id="email" placeholder="Enter Your Email">
+      <input type="email" id="email" name="email" placeholder="Enter Your Email">
       <small class="error-message" id="emailError"></small>
     </div>
     <div class="input-group">
-      <input type="password" id="password" placeholder="Enter Password">
+      <input type="password" id="password" name="password" placeholder="Enter Password">
       <small class="error-message" id="passwordError"></small>
     </div>
     <div class="input-group">
-      <select id="workAs">
+      <select id="work_as" name="work_as">
         <option value="">--Work As--</option>
         <option value="Manager">Manager</option>
         <option value="Developer">Developer</option>
       </select>
       <small class="error-message" id="workAsError"></small>
     </div>
-    <button type="button" id="signupButton">Sign Up</button>
+    <button type="submit" id="signupButton">Sign Up</button>
     <div id="successMessage">Signup Successful! Redirecting...</div>
+    <div class="login-link">
+      Already have an account? <a href="login.html">Log in</a>
+    </div>
   </form>
 
   <script>
@@ -212,9 +230,9 @@
         successMessage.style.display = 'block';
         document.getElementById('signupButton').disabled = true;
 
-        setTimeout(() => {
-          window.location.href = 'login.html';
-        }, 500);
+        // setTimeout(() => {
+        //   window.location.href = 'login.html';
+        // }, 500);
       }
     });
   </script>
